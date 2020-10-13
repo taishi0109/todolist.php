@@ -7,5 +7,5 @@ Route::get('/archives/', function() {
 });
 
 Route::get('/archives/{category}/', function($category) {
-    return $id.'のページ';
+    return $id.'のページ+';
 });
