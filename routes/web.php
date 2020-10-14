@@ -7,5 +7,5 @@ Route::get('/archives/', function() {
 });
 
 Route::get('/archives/{category}/', function($category) {
-    return $category.'のページ';
+    return $category.'は変態';
 });
