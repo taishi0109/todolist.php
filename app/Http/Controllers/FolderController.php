@@ -7,7 +7,7 @@ use App\Models\Folder;
 
 class FolderController extends Controller
 {
-    public function create(Request $request)
+    public function create(Request $request)    
 {
     // フォルダモデルのインスタンスを作成する
     $folder = new Folder();

@@ -8,7 +8,7 @@ use Carbon\Carbon;
 
 class Task extends Model
 {
-     /**
+    /**
      * 状態定義
      */
     const STATUS = [
@@ -40,3 +40,4 @@ class Task extends Model
             ->format('Y/m/d');
     }
 }
+    
