@@ -9,13 +9,15 @@
           <div class="panel-body">
             @if($errors->any())
             <div class="alert alert-danger">
-              @foreach($errors->all() as $message)
-              <p>{{ $message }}</p>
+              <ul>
+                @foreach($errors->all() as $message)
+                <li>{{ $message }}</li>
                 @endforeach
+              </ul>
             </div>
             @endif
             <form action="{{ route('folders.create') }}" method="post">
-              @csrf
+            @csrf
               <div class="form-group">
                 <label for="title">フォルダ名</label>
                 <input type="text" class="form-control" name="title" id="title" value="{{ old('title') }}" />
