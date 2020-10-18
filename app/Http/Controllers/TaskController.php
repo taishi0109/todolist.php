@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Folder;
+use App\Models\Folder;
 use App\Http\Requests\CreateTask;
 use App\Http\Requests\EditTask;
-use App\Task;
+use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,6 +33,7 @@ class TaskController extends Controller
             'tasks' => $tasks,
         ]);
     }
+
     /**
      * タスク作成フォーム
      * @param Folder $folder
@@ -59,9 +60,7 @@ class TaskController extends Controller
 
         $folder->tasks()->save($task);
 
-        return redirect()->route('tasks.index', [
-            'id' => $folder->id,
-        ]);
+        return redirect()->route('tasks.index', $folder->id);
     }
 
     /**
@@ -74,12 +73,12 @@ class TaskController extends Controller
     {
         $this->checkRelation($folder, $task);
 
-        if ($folder->id !== $task->folder_id) {
-            abort(404);
-        }
-            return view('tasks/edit', [
-                'task' => $task,
-            ]);
+    if ($folder->id !== $task->folder_id) {
+        abort(404);
+    }
+        return view('tasks/edit', [
+            'task' => $task,
+        ]);
     }
 
     /**
@@ -92,24 +91,22 @@ class TaskController extends Controller
     public function edit(Folder $folder, Task $task, EditTask $request)
     {
         $this->checkRelation($folder, $task);
-
         if ($folder->id !== $task->folder_id) {
             abort(404);
         }
-            $task->title = $request->title;
-            $task->status = $request->status;
-            $task->due_date = $request->due_date;
-            $task->save();
+        $task->title = $request->title;
+        $task->status = $request->status;
+        $task->due_date = $request->due_date;
+        $task->save();
 
         return redirect()->route('tasks.index', [
             'id' => $task->folder_id,
         ]);
     }
-
     private function checkRelation(Folder $folder, Task $task)
-{
+    {
     if ($folder->id !== $task->folder_id) {
         abort(404);
     }
-}
+    }
 }
