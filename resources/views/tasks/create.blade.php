@@ -1,8 +1,7 @@
 @extends('layout')
 
 @section('styles')
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <link rel="stylesheet" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
+  @include('share.flatpickr.styles')
 @endsection
 
 @section('content')
@@ -14,13 +13,14 @@
           <div class="panel-body">
             @if($errors->any())
               <div class="alert alert-danger">
-                @foreach($errors->all() as $message)
-                  <p>{{ $message }}</p>
-                @endforeach
+                <ul>
+                  @foreach($errors->all() as $message)
+                    <li>{{ $message }}</li>
+                  @endforeach
+                </ul>
               </div>
             @endif
-            <!-- 下記1行変更必要？ -->
-            <form action="{{ route('tasks.create', ['id' => $folder_id]) }}" method="POST">
+            <form action="{{ route('folders.create') }}" method="post">
               @csrf
               <div class="form-group">
                 <label for="title">タイトル </label>
