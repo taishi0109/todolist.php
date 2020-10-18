@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Folder;
+use Illuminate\Http\Request;
 use App\Http\Requests\CreateFolder;
 
 class FolderController extends Controller

@@ -77,10 +77,10 @@ return [
         'array' => 'The :attribute must not have more than :value items.',
     ],
     'max' => [
-        'numeric' => ':attribute は :max 文字以内で入力してください。',
-        'file' => ':attribute は :max 文字以内で入力してください。',
+        'numeric' => 'The :attribute may not be greater than :max.',
+        'file' => 'The :attribute may not be greater than :max kilobytes.',
         'string'  => ':attribute は :max 文字以内で入力してください。',
-        'array' => ':attribute は :max 文字以内で入力してください。',
+        'array' => 'The :attribute may not have more than :max items.',
     ],
     'mimes' => 'The :attribute must be a file of type: :values.',
     'mimetypes' => 'The :attribute must be a file of type: :values.',
