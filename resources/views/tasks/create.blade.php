@@ -20,7 +20,7 @@
                 </ul>
               </div>
             @endif
-            <form action="{{ route('folders.create') }}" method="post">
+            <form action="{{ route('tasks.create', ['folder' => $folder]) }}" method="POST">
               @csrf
               <div class="form-group">
                 <label for="title">タイトル </label>
@@ -42,13 +42,5 @@
 @endsection
 
 @section('scripts')
-  <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
-  <script src="https://npmcdn.com/flatpickr/dist/l10n/ja.js"></script>
-  <script>
-    flatpickr(document.getElementById('due_date'), {
-      locale: 'ja',
-      dateFormat: "Y/m/d",
-      minDate: new Date()
-    });
-  </script>
+  @include('share.flatpickr.scripts')
 @endsection
